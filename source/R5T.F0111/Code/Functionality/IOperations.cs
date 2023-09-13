@@ -60,7 +60,7 @@ namespace R5T.F0111
             textOutput.WriteSectionSeparator();
 
             // Write out all projects.
-            Instances.FileOperator.WriteLines_Synchronous(
+            Instances.FileOperator.Write_Lines_Synchronous(
                 allProjectsListTextFilePath,
                 allProjectFilePaths);
 
@@ -81,7 +81,7 @@ namespace R5T.F0111
             textOutput.WriteInformation("After filtering {0} project files remain.", projectFilePaths.Length);
 
             // Write out projects list we actually want to build.
-            Instances.FileOperator.WriteLines_Synchronous(
+            Instances.FileOperator.Write_Lines_Synchronous(
                 projectsOfInterestTextFilePath,
                 projectFilePaths);
 

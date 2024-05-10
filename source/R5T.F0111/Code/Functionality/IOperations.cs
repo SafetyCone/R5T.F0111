@@ -17,10 +17,11 @@ namespace R5T.F0111
             ITextOutput textOutput)
         {
             // Output project paths to current run date's directory.
-            var repositoriesDirectoryPaths = Instances.RepositoriesDirectoryPaths.AllOfMine;
+            var repositoriesDirectoryPaths = Instances.RepositoriesDirectoryPathsSets.All_Internal;
 
             // Write out the repositories directories to the human output.
             textOutput.HumanOutput.WriteLine("Projects will be found in directories:");
+
             foreach (var repositoriesDirectoryPath in repositoriesDirectoryPaths)
             {
                 textOutput.HumanOutput.WriteLine($"\t{repositoriesDirectoryPath}");

@@ -1,6 +1,6 @@
 using System;
 using System.Linq;
-
+using System.Net.WebSockets;
 using R5T.T0132;
 using R5T.T0159;
 
@@ -27,9 +27,19 @@ namespace R5T.F0111
                 textOutput.HumanOutput.WriteLine($"\t{repositoriesDirectoryPath}");
             }
 
-            var projectFilePaths = Instances.FileSystemOperator.GetAllProjectFilePaths_FromRepositoriesDirectoryPaths(
-                repositoriesDirectoryPaths,
-                textOutput)
+            var projectFilePaths = Instances.TimingOperator.MeasureDuration(
+                () =>
+                {
+                    var projectFilePaths = Instances.CodeFileSystemOperator.Get_ProjectFilePaths_ForRepositories(
+                        repositoriesDirectoryPaths);
+
+                    return projectFilePaths;
+                },
+                out var duration);
+
+            textOutput.WriteInformation($"Found {projectFilePaths.Length} project file paths in {duration.TotalSeconds} seconds.");
+
+            var output = projectFilePaths
                 .OrderAlphabetically()
                 .Now();
 

@@ -6,6 +6,9 @@ using R5T.T0159;
 
 namespace R5T.F0111
 {
+    /// <summary>
+    /// Project file survey functionality.
+    /// </summary>
     [FunctionalityMarker]
     public partial interface IFileSystemOperator : IFunctionalityMarker,
         F0082.IFileSystemOperator
